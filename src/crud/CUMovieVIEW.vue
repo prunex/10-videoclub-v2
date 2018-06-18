@@ -148,8 +148,8 @@
                     >Register</button> -->
                     <general-button 
                         typeGlyphicon="success"
-                        titleButton="Register"
-                        v-on:clic.prevent="register"
+                        buttonTitle="Register"
+                        v-on:clic="register"
                     ></general-button>
                     <!-- <general-button
                         typeGlyphicon="danger"
@@ -166,7 +166,7 @@
     import myAxios from "../lib/myAxios.js";
     import GeneralButton from "./GeneralButton.vue";
     export default {
-        name: "Create/Update Movie VIEW",
+        name: "cu-movie",
         data(){
             return{
                 myMovie:{
@@ -196,7 +196,7 @@
                 }else{
                     myAxios
                         .insertMovie(this.myMovie)
-                        .then(answer => this.$route.push("/"))
+                        .then(answer => this.$router.push("/"))
                         .catch(messageServ => console.log(messageServ));
                 }
             },

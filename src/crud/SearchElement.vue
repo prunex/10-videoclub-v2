@@ -1,7 +1,8 @@
 <template>
     <div class="form-group">
-        <label for="mySearch">Search element</label>
-        <input type="search" 
+        <label for="mySearch">Search element: </label>
+        <input 
+            type="search" 
             name="mySearch" 
             placeholder="Search by name" 
             v-model="search"

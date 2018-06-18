@@ -13,11 +13,11 @@
 
 <script>
     export default {
-      name: "list button",
+      name: "list-button",
       props: ["buttonTitle", "glyphiconType"],
       computed:{
           glyphicon(){
-              return "glyphicon glyphicon-" + this.glypgiconType;
+              return "glyphicon glyphicon-" + this.glyphiconType;
           }
       },
       methods:{

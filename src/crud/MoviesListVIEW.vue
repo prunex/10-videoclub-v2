@@ -14,6 +14,8 @@
                     <th>Year</th>
                     <th>Director</th>
                     <th>Poster</th>
+                    <th>Disponibility</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,6 +33,8 @@
                     <th>Year</th>
                     <th>Director</th>
                     <th>Poster</th>
+                    <th>Disponibility</th>
+                    <th>Actions</th>
                 </tr>
             </tfoot>
         </table>
@@ -62,7 +66,7 @@
         },        
         computed: {
             moviesFilter() {
-                return this.movies.filter(element => element.title.include(this.search));
+                return this.movies.filter(element => element.title.includes(this.search));
             }
         },
         mounted: function() {

@@ -10,6 +10,9 @@
             <ul class="nav navbar-nav">
               <li><router-link to="/">Movie list</router-link></li>
               <li><router-link to="/newMovie">New movie</router-link></li>
+              <li></li><li></li><li></li>
+              <li><router-link to="/userlist">User list</router-link></li>
+              <li><router-link to="/newUser">New user</router-link></li>
             </ul>
           </div>
         </nav>

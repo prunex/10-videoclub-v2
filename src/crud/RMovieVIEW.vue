@@ -3,6 +3,63 @@
         <a name="showMovie"></a>
         <h2>Show Movie</h2>
 
+        <!-- INICIO Series de botonos -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Actions</h3>
+            </div>
+            <div class="panel-body">
+                <div class="control-group">
+                    <div class="controls">
+                        <!-- Buttons -->
+                        <a href="#listUser">
+                            <general-button
+                                typeGlyphicon="link"
+                                buttonTitle="First"
+                                v-on:clic="backToIndex"
+                            ></general-button>
+                        </a>
+                        <a href="#listUser">
+                            <general-button
+                                typeGlyphicon="link"
+                                buttonTitle="Previous"
+                                v-on:clic="backToIndex"
+                            ></general-button>
+                        </a>
+                        <a href="#listUser">
+                            <general-button
+                                typeGlyphicon="link"
+                                buttonTitle="Next"
+                                v-on:clic="backToIndex"
+                            ></general-button>
+                        </a>
+                        <a href="#listUser">
+                            <general-button
+                                typeGlyphicon="link"
+                                buttonTitle="Last"
+                                v-on:clic="backToIndex"
+                            ></general-button>
+                        </a>
+                        <a href="#listUser">
+                            <general-button
+                                typeGlyphicon="warning"
+                                buttonTitle="Edit"
+                                v-on:clic="backToIndex"
+                            ></general-button>
+                        </a>
+                        <a href="#listUser">
+                            <general-button
+                                typeGlyphicon="primary"
+                                buttonTitle="Back"
+                                v-on:clic="backToIndex"
+                            ></general-button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIN Series de botonos -->
+
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">ID</h3>
@@ -42,7 +99,7 @@
             <div class="panel-heading">
                 <h3 class="panel-title">Rented</h3>
             </div>
-            <div class="panel-body">{{ myMovie.rented }}</div>
+            <div class="panel-body">{{ myMovie.rented ? 'Alquilada' : 'Disponible' }}</div>
         </div>
 
         <div class="panel panel-default">
@@ -66,18 +123,63 @@
             <div class="panel-body">{{ myMovie.updated_at }}</div>
         </div>
 
-        <div class="control-group">
-            <!-- Button -->
-            <div class="controls">
-                <a href="#listMovie">
-                    <general-button
-                        typeGlyphicon="primary"
-                        titleButton="Back"
-                        v-on:clic="backToIndex"
-                    ></general-button>
-                </a>
+        <!-- INICIO Series de botonos -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Actions</h3>
+            </div>
+            <div class="panel-body">
+                <div class="control-group">
+                    <div class="controls">
+                        <!-- Buttons -->
+                        <a href="#listUser">
+                            <general-button
+                                typeGlyphicon="link"
+                                buttonTitle="First"
+                                v-on:clic="backToIndex"
+                            ></general-button>
+                        </a>
+                        <a href="#listUser">
+                            <general-button
+                                typeGlyphicon="link"
+                                buttonTitle="Previous"
+                                v-on:clic="backToIndex"
+                            ></general-button>
+                        </a>
+                        <a href="#listUser">
+                            <general-button
+                                typeGlyphicon="link"
+                                buttonTitle="Next"
+                                v-on:clic="backToIndex"
+                            ></general-button>
+                        </a>
+                        <a href="#listUser">
+                            <general-button
+                                typeGlyphicon="link"
+                                buttonTitle="Last"
+                                v-on:clic="backToIndex"
+                            ></general-button>
+                        </a>
+                        <a href="#listUser">
+                            <general-button
+                                typeGlyphicon="warning"
+                                buttonTitle="Edit"
+                                v-on:clic="backToIndex"
+                            ></general-button>
+                        </a>
+                        <a href="#listUser">
+                            <general-button
+                                typeGlyphicon="primary"
+                                buttonTitle="Back"
+                                v-on:clic="backToIndex"
+                            ></general-button>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
+        <!-- FIN Series de botonos -->
+        
     </div>    
 </template>
 
@@ -85,7 +187,7 @@
     import myAxios from "../lib/myAxios.js";
     import GeneralButton from "./GeneralButton.vue";
     export default {
-        name: "Read movie",
+        name: "ReadMovie",
         data(){
             return{
                 myMovie:{
@@ -101,7 +203,7 @@
                 }
             }
         },
-        component:{
+        components:{
             "general-button": GeneralButton
         },
         props:["id"],
@@ -111,7 +213,12 @@
             }
         },
         mounted: function(){
-
+            if(this.id){
+                myAxios
+                    .getMovie(this.id)
+                    .then(answer => (this.myMovie = answer.data))
+                    .catch(messageSrv => console.log(messageSrv))
+            }
         }     
     }
 </script>
